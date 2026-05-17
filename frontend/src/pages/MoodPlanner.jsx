@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Compass, Coffee, Heart, Landmark, Calendar, MapPin, Clock } from 'lucide-react';
+import { Compass, Coffee, Heart, Landmark, Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { destinations } from '../utils/destinationsData';
 
 const MOODS = [
   {
@@ -8,6 +10,7 @@ const MOODS = [
     icon: <Compass className="w-8 h-8" />,
     color: 'bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-300',
     description: 'Action-packed, high energy, and outdoors.',
+    recommendedIds: [9, 10, 11],
     itinerary: [
       {
         day: 1,
@@ -46,6 +49,7 @@ const MOODS = [
     icon: <Coffee className="w-8 h-8" />,
     color: 'bg-teal-100 text-teal-600 dark:bg-teal-950 dark:text-teal-300',
     description: 'Spa days, beaches, and slow mornings.',
+    recommendedIds: [4, 13, 14],
     itinerary: [
       {
         day: 1,
@@ -84,6 +88,7 @@ const MOODS = [
     icon: <Heart className="w-8 h-8" />,
     color: 'bg-pink-100 text-pink-600 dark:bg-pink-950 dark:text-pink-300',
     description: 'Candlelit dinners, scenic views, and quality time.',
+    recommendedIds: [1, 13, 14],
     itinerary: [
       {
         day: 1,
@@ -121,6 +126,7 @@ const MOODS = [
     icon: <Landmark className="w-8 h-8" />,
     color: 'bg-violet-100 text-violet-600 dark:bg-violet-950 dark:text-violet-300',
     description: 'Museums, history, and local traditions.',
+    recommendedIds: [2, 7, 8],
     itinerary: [
       {
         day: 1,
@@ -255,6 +261,46 @@ export default function MoodPlanner() {
                 Save Itinerary
               </button>
             </div>
+
+            {/* Recommended Destinations */}
+            {activeMood.recommendedIds && activeMood.recommendedIds.length > 0 && (
+              <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Perfect Destinations for this Mood
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  {activeMood.recommendedIds.map(destId => {
+                    const dest = destinations.find(d => d.id === destId);
+                    if (!dest) return null;
+                    return (
+                      <Link 
+                        key={dest.id} 
+                        to={`/destinations/${dest.id}`}
+                        className="group block rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 hover:shadow-lg hover:border-teal-300 dark:hover:border-teal-700 transition-all"
+                      >
+                        <div className="relative h-40 overflow-hidden">
+                          <img 
+                            src={dest.image} 
+                            alt={dest.name} 
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                          <h4 className="absolute bottom-4 left-4 text-white font-bold text-lg">
+                            {dest.name}
+                          </h4>
+                        </div>
+                        <div className="p-4 flex items-center justify-between">
+                          <span className="text-sm text-gray-600 dark:text-gray-400">
+                            Explore {dest.name}
+                          </span>
+                          <ArrowRight className="w-5 h-5 text-teal-500 transform group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

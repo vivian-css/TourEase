@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass, Coffee, Heart, Landmark, Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Compass, Coffee, Heart, Landmark, Calendar, MapPin, Clock, ArrowRight, Music, Utensils, Trees, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { destinations } from '../utils/destinationsData';
 
@@ -155,6 +155,162 @@ const MOODS = [
           { time: '10:00 AM', desc: 'Artisan workshop (pottery or weaving).', icon: <Clock className="w-4 h-4"/> },
           { time: '01:00 PM', desc: 'Final authentic lunch.', icon: <Clock className="w-4 h-4"/> },
           { time: '03:00 PM', desc: 'Transfer to the airport.', icon: <MapPin className="w-4 h-4"/> }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'party',
+    name: 'Party & Nightlife',
+    icon: <Music className="w-8 h-8" />,
+    color: 'bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-950 dark:text-fuchsia-300',
+    description: 'Energetic, clubs, and late nights.',
+    recommendedIds: [6, 5, 3],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival & Pre-Party',
+        activities: [
+          { time: '04:00 PM', desc: 'Check into your downtown hotel.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '07:00 PM', desc: 'Cocktails and tapas at a rooftop bar.', icon: <Clock className="w-4 h-4"/> },
+          { time: '11:00 PM', desc: 'VIP entry to the top local nightclub.', icon: <Clock className="w-4 h-4"/> },
+          { time: '03:00 AM', desc: 'Late night street food run.', icon: <Clock className="w-4 h-4"/> }
+        ]
+      },
+      {
+        day: 2,
+        title: 'Recovery & Beach Club',
+        activities: [
+          { time: '12:00 PM', desc: 'Late brunch by the water.', icon: <Clock className="w-4 h-4"/> },
+          { time: '02:00 PM', desc: 'Afternoon at an exclusive day club.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '08:00 PM', desc: 'Dinner in the entertainment district.', icon: <Clock className="w-4 h-4"/> },
+          { time: '10:30 PM', desc: 'Bar hopping and live music venues.', icon: <Clock className="w-4 h-4"/> }
+        ]
+      },
+      {
+        day: 3,
+        title: 'Chill & Departure',
+        activities: [
+          { time: '11:00 AM', desc: 'Relaxing spa morning to recover.', icon: <Clock className="w-4 h-4"/> },
+          { time: '01:00 PM', desc: 'Farewell lunch.', icon: <Clock className="w-4 h-4"/> },
+          { time: '04:00 PM', desc: 'Head to the airport.', icon: <MapPin className="w-4 h-4"/> }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'foodie',
+    name: 'Foodie Explore',
+    icon: <Utensils className="w-8 h-8" />,
+    color: 'bg-yellow-100 text-yellow-600 dark:bg-yellow-950 dark:text-yellow-300',
+    description: 'Culinary, markets, and fine dining.',
+    recommendedIds: [2, 1, 5],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Market Tour & Street Food',
+        activities: [
+          { time: '10:00 AM', desc: 'Guided tour of the central food market.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '01:00 PM', desc: 'Lunch at a famous street food stall.', icon: <Clock className="w-4 h-4"/> },
+          { time: '04:00 PM', desc: 'Coffee or tea tasting experience.', icon: <Clock className="w-4 h-4"/> },
+          { time: '08:00 PM', desc: 'Authentic local dinner.', icon: <Clock className="w-4 h-4"/> }
+        ]
+      },
+      {
+        day: 2,
+        title: 'Cooking & Fine Dining',
+        activities: [
+          { time: '09:30 AM', desc: 'Traditional cooking class.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '01:00 PM', desc: 'Enjoy the meal you just cooked.', icon: <Clock className="w-4 h-4"/> },
+          { time: '05:00 PM', desc: 'Visit a local brewery or winery.', icon: <Clock className="w-4 h-4"/> },
+          { time: '08:30 PM', desc: 'Michelin-starred dining experience.', icon: <Clock className="w-4 h-4"/> }
+        ]
+      },
+      {
+        day: 3,
+        title: 'Sweet Treats & Departure',
+        activities: [
+          { time: '09:00 AM', desc: 'Breakfast at a famous local bakery.', icon: <Clock className="w-4 h-4"/> },
+          { time: '11:00 AM', desc: 'Shopping for spices and local treats.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '02:00 PM', desc: 'Final late lunch before departure.', icon: <Clock className="w-4 h-4"/> }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'nature',
+    name: 'Nature & Wildlife',
+    icon: <Trees className="w-8 h-8" />,
+    color: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-300',
+    description: 'Forests, parks, and serene landscapes.',
+    recommendedIds: [10, 4, 9],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Into the Wild',
+        activities: [
+          { time: '09:00 AM', desc: 'Arrive at the eco-lodge.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '11:00 AM', desc: 'Introductory guided forest walk.', icon: <Clock className="w-4 h-4"/> },
+          { time: '03:00 PM', desc: 'Wildlife spotting by the lake.', icon: <Clock className="w-4 h-4"/> },
+          { time: '07:00 PM', desc: 'Dinner under the stars.', icon: <Clock className="w-4 h-4"/> }
+        ]
+      },
+      {
+        day: 2,
+        title: 'Exploration Day',
+        activities: [
+          { time: '06:00 AM', desc: 'Early morning bird watching tour.', icon: <Clock className="w-4 h-4"/> },
+          { time: '10:00 AM', desc: 'Hike to the hidden waterfalls.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '01:00 PM', desc: 'Picnic lunch in nature.', icon: <Clock className="w-4 h-4"/> },
+          { time: '04:00 PM', desc: 'Canoeing or kayaking on the river.', icon: <Clock className="w-4 h-4"/> }
+        ]
+      },
+      {
+        day: 3,
+        title: 'Final Views & Departure',
+        activities: [
+          { time: '08:00 AM', desc: 'Sunrise photography session.', icon: <Clock className="w-4 h-4"/> },
+          { time: '10:00 AM', desc: 'Visit a local conservation center.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '01:00 PM', desc: 'Depart back to the city.', icon: <MapPin className="w-4 h-4"/> }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'luxury',
+    name: 'Luxury & Shopping',
+    icon: <ShoppingBag className="w-8 h-8" />,
+    color: 'bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-300',
+    description: 'High-end resorts and designer stores.',
+    recommendedIds: [6, 1, 8],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Style',
+        activities: [
+          { time: '02:00 PM', desc: 'Check into a 5-star hotel suite.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '04:00 PM', desc: 'Personal styling session.', icon: <Clock className="w-4 h-4"/> },
+          { time: '07:30 PM', desc: 'Chauffeur to an exclusive restaurant.', icon: <Clock className="w-4 h-4"/> },
+          { time: '10:00 PM', desc: 'Drinks at a members-only lounge.', icon: <Clock className="w-4 h-4"/> }
+        ]
+      },
+      {
+        day: 2,
+        title: 'Designer Shopping Spree',
+        activities: [
+          { time: '10:00 AM', desc: 'Visit flagship designer boutiques.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '01:00 PM', desc: 'High tea at a luxury cafe.', icon: <Clock className="w-4 h-4"/> },
+          { time: '03:00 PM', desc: 'Spa and wellness treatments.', icon: <Clock className="w-4 h-4"/> },
+          { time: '08:00 PM', desc: 'Private yacht or helicopter tour.', icon: <MapPin className="w-4 h-4"/> }
+        ]
+      },
+      {
+        day: 3,
+        title: 'Leisure & Departure',
+        activities: [
+          { time: '10:00 AM', desc: 'Breakfast in bed.', icon: <Clock className="w-4 h-4"/> },
+          { time: '12:00 PM', desc: 'Last minute duty-free shopping.', icon: <MapPin className="w-4 h-4"/> },
+          { time: '03:00 PM', desc: 'Private transfer to the airport.', icon: <MapPin className="w-4 h-4"/> }
         ]
       }
     ]

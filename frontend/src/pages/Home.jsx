@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Testimonials from "../pages/Testimonials";
 import { Link } from "react-router-dom";
 import {
@@ -17,7 +18,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import CountUp from "../components/CountUp";
-import ChatbotLauncher from "../components/chatbot/ChatbotLauncher";
 
 
 export default function Home() {
@@ -360,9 +360,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-    {/* ================= CHATBOT ================= */}
-      <ChatbotLauncher />
-    </div>
+      </div>
+
   );
 }
 
@@ -431,3 +430,25 @@ function CommunityCard({ name, location, quote, trips }) {
     </div>
   );
 }
+
+FeatureCard.propTypes = {
+  icon: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+};
+
+StepCard.propTypes = {
+  number: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+};
+
+CommunityCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  quote: PropTypes.string.isRequired,
+  trips: PropTypes.string.isRequired,
+};

@@ -1,5 +1,6 @@
 import Loader from './components/common/Loader';
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
   Routes,
@@ -21,6 +22,8 @@ import Signup from "./pages/signup";
 import Login from "./pages/Login";
 import AddFavorite from "./pages/AddFavorite";
 import ScrollToTopButton from "./components/common/ScrollToTop";
+import LanguageSelector from "./components/LanguageSelector";
+import ChatbotLauncher from "./components/chatbot/ChatbotLauncher";
 import DestinationDetails from "./pages/DestinationDetails";
 import PlanTrip from "./pages/PlanTrip";
 import OAuthSuccess from "./pages/OAuthSuccess";
@@ -42,6 +45,10 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 function AppRoutes() {
   const location = useLocation();
   const hideNavigationPaths = ["/signup", "/login"];
@@ -51,6 +58,8 @@ function AppRoutes() {
     <>
       {showNavigation && <Navigation />}
       <ScrollToTopButton />
+      <LanguageSelector />
+      <ChatbotLauncher />
       <div className={showNavigation ? "pt-16" : ""}>
         <Routes>
           <Route path="/" element={<Home />} />

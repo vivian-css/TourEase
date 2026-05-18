@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![SWOC'26](https://img.shields.io/badge/SWOC-2026-blue.svg)](https://socialwinterofcode.com/)
+[![GSSoC'2026](https://img.shields.io/badge/GSSoC-2026-blue.svg)](https://gssoc.girlscript.org/)
 
 </div>
 
@@ -142,13 +142,13 @@ TourEase is fully responsive and works seamlessly across devices.
 
 ---
 
-## 🚀 Quick Start (SWOC'26)
+## 🚀 Quick Start (GSSoC'2026)
 
 To get the project running in under 2 minutes:
 
 1. **Clone the Repo**
    ```bash
-   git clone [https://github.com/Suhani1234-5/TourEase.git](https://github.com/Suhani1234-5/TourEase.git)
+   git clone https://github.com/Suhani1234-5/TourEase.git
    cd TourEase
    ```
 2. **Install & Run**
@@ -174,7 +174,7 @@ npm start
 
 ## 🤝 Contributing
 
-Joining us for **SWOC'26**? We love PRs! 🚀
+Joining us for **GSSoC'2026**? We love PRs! 🚀
 
 * Please read our **[Contributing Guidelines](CONTRIBUTING.md)** to get started.
 * Check out the **Project Roadmap** in our issues for open tasks.

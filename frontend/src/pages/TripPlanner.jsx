@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { api } from '../services/api';
 
+
 function formatItinerary(plan) {
   if (!plan) return null;
   const lines = plan.split("\n").filter(Boolean);
@@ -87,7 +88,7 @@ function ReviewItem({ icon, label, value }) {
 }
 
 export default function TripPlanner() {
-  const navigate = useNavigate();
+  
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     destination: '',

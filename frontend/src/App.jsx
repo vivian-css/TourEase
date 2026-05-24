@@ -40,6 +40,7 @@ import WatchDemoPage from './pages/DemoSection';
 import ScrollToTopOnNavigate from "./components/common/ScrollToTopOnNavigate";
 import DynamicPlannerPage from './pages/DynamicPlannerPage';
 import SplitExpense from "./pages/SplitExpense";
+import Contributors from "./pages/Contributors";
 
 function ProtectedRoute({ children }) {
   const isAuthenticated = Boolean(localStorage.getItem("token"));
@@ -80,6 +81,7 @@ function AppRoutes() {
             }
           />
           <Route path='/demo' element={<WatchDemoPage />} />
+          <Route path="/contributors" element={<Contributors />} />
           <Route path="/about" element={<About />} />
           <Route path="/features" element={<Features />} />
           <Route path="/destinations" element={<Destinations />} />

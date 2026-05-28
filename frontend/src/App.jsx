@@ -43,6 +43,7 @@ import ScrollToTopOnNavigate from "./components/common/ScrollToTopOnNavigate";
 import DynamicPlannerPage from './pages/DynamicPlannerPage';
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import SplitExpense from "./pages/SplitExpense";
+import TravelLocker from "./pages/TravelLocker";
 import Contributors from "./pages/Contributors";
 
 function ProtectedRoute({ children }) {
@@ -109,6 +110,14 @@ function AppRoutes() {
               element={
                 <ProtectedRoute>
                   <PageTransition><SplitExpense /></PageTransition>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/travel-locker"
+              element={
+                <ProtectedRoute>
+                  <PageTransition><TravelLocker /></PageTransition>
                 </ProtectedRoute>
               }
             />

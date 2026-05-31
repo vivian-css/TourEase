@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const passport = require("./config/passport");
 
 // Route Imports
 const authRoutes = require("./routes/authRoutes");
@@ -16,6 +17,7 @@ const smartPlannerRoutes = require("./routes/smartPlannerRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const chatRoutes = require("./routes/chatroutes");
 const expenseRoutes = require("./routes/expenseRoutes");
+const lockerRoutes = require("./routes/lockerRoutes");
 
 dotenv.config();
 
@@ -30,6 +32,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(passport.initialize());
 
 const MONGODB_URI = process.env.MONGODB_URL;
 
@@ -50,6 +53,9 @@ app.use('/api/events', eventRoutes);
 app.use('/api/weather', weatherRoutes);
 app.use('/api/smart-planner', smartPlannerRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/expense', expenseRoutes);
+app.use('/api/locker', lockerRoutes);
 
 // Health Check Endpoint
 app.get("/api/health", (req, res) => {

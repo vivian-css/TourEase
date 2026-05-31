@@ -51,7 +51,6 @@ export default function About() {
               >
                 Learn More
               </Link>
-
             </div>
           </div>
 

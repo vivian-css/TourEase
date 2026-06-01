@@ -67,7 +67,7 @@ function AppRoutes() {
 
   return (
     <>
-      <ScrollToTopOnNavigate /> 
+      <ScrollToTopOnNavigate />
       {showNavigation && <Navigation />}
       <ScrollToTopButton />
       {showNavigation && <ChatbotLauncher />}

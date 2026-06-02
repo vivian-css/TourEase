@@ -117,7 +117,7 @@ const ReviewForm = ({ destinationId, refreshReviews }) => {
 
     setIsSubmitting(true);
     try {
-      await submitReview(destinationId, {
+      const reviewPayload = {
         ...formData,
         rating: Number(formData.rating),
         destinationId,

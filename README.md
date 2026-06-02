@@ -106,10 +106,9 @@ TourEase is an open-source, AI-powered travel assistant that helps tourists plan
 
 ---
 
-## 🗂️ Project Structure
+<!-- Removed duplicate Project Structure heading -->
 
 ## 🗂️ Project Structure
-
 ```text
 TourEase/
 ├── frontend/                        # React + Vite client (Mapped to Port 7000)

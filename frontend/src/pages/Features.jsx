@@ -200,6 +200,7 @@ const features = [
     color: "bg-cyan-100 text-cyan-600 dark:bg-indigo-950 dark:text-indigo-300",
     categories: ["utilities"],
     size: "small",
+    link: "/travel-locker",
     highlights: [
       "Document storage",
       "Belongings tracker",
@@ -286,7 +287,6 @@ const features = [
     ],
   },
 ];
->>>>>>> origin/main
 
 export default function Features() {
   const [activeCategory, setActiveCategory] = useState("all");

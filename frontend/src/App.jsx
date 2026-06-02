@@ -45,6 +45,7 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import SplitExpense from "./pages/SplitExpense";
 import CurrencyConverter from "./pages/CurrencyConverter";
 import Contributors from "./pages/Contributors";
+import TravelLocker from "./pages/TravelLocker";
 
 function ProtectedRoute({ children }) {
   const isAuthenticated = Boolean(localStorage.getItem("token"));
@@ -109,6 +110,14 @@ function AppRoutes() {
               element={
                 <ProtectedRoute>
                   <PageTransition><SplitExpense /></PageTransition>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/travel-locker"
+              element={
+                <ProtectedRoute>
+                  <PageTransition><TravelLocker /></PageTransition>
                 </ProtectedRoute>
               }
             />

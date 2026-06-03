@@ -38,6 +38,7 @@ import TripPlanner from './pages/TripPlanner';
 import SmartTripPlanner from './pages/SmartTripPlanner';
 import Footer from "./components/Footer";
 import WatchDemoPage from './pages/DemoSection';
+import MoodPlanner from "./pages/MoodPlanner";
 import ScrollToTopOnNavigate from "./components/common/ScrollToTopOnNavigate";
 import DynamicPlannerPage from './pages/DynamicPlannerPage';
 import { ScrollToTop } from "./components/common/ScrollToTop";
@@ -102,7 +103,9 @@ function AppRoutes() {
             <Route path="/oauth-success" element={<PageTransition><OAuthSuccess /></PageTransition>} />
             <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
             <Route path="/trip-planner" element={<PageTransition><TripPlanner /></PageTransition>} />
-            <Route path="/smart-trip-planner" element={<PageTransition><SmartTripPlanner /></PageTransition>} />
+            <Route path="/smart-trip-planner" element={<PageTransition><SmartTripPlanner /></PageTransition>} /> feat/travel-locker
+            <Route path="/mood-planner" element={<PageTransition><MoodPlanner /></PageTransition>} />
+            main
             <Route
               path="/split-expense"
               element={
@@ -118,6 +121,8 @@ function AppRoutes() {
                   <PageTransition><TravelLocker /></PageTransition>
                 </ProtectedRoute>
               }
+            />
+            <Route
               path="/currency-converter"
               element={<PageTransition><CurrencyConverter /></PageTransition>}
             />

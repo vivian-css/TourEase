@@ -3,34 +3,35 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
+const helmet = require("helmet");
+const morgan = require("morgan");
+const passport = require("./config/passport");
 
-const reviewRoutes = require("./routes/reviewRoutes");
+dotenv.config();
+
+// Route Imports
+const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const tripRoutes = require("./routes/tripRoutes");
 const itineraryRoutes = require("./routes/itineraryRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 const weatherRoutes = require("./routes/weatherRoutes");
 const smartPlannerRoutes = require("./routes/smartPlannerRoutes");
-const tripRoutes = require("./routes/tripRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 const chatRoutes = require("./routes/chatroutes");
 const expenseRoutes = require("./routes/expenseRoutes");
 const lockerRoutes = require("./routes/lockerRoutes");
-const helmet = require("helmet");
-const passport = require("./config/passport");
-const morgan = require("morgan");
-
-
-
-dotenv.config();
 
 const app = express();
 
+// Middleware Infrastructure
 app.use(helmet());
 app.use(morgan("dev")); // use "combined" in production
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",")
-  : ["http://localhost:3000", "http://localhost:5173"];
+  : ["http://localhost:3000", "http://localhost:5173", "http://localhost:7000"];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -47,7 +48,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 
-// Routes
+// 1. Connect to Database
+mongoose
+  .connect(process.env.MONGODB_URL)
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
+const MONGODB_URI = process.env.MONGODB_URL;
+
+if (!MONGODB_URI) {
+  console.error("CRITICAL ERROR: MONGODB_URL is not defined in the environment variables!");
+}
+
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log("Database connected successfully!"))
+  .catch((err) => console.error("Database connection failure:", err));
+
+// Application Endpoints
 app.use('/api/auth', authRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/trip', tripRoutes);
@@ -58,28 +74,37 @@ app.use('/api/smart-planner', smartPlannerRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/expenses', expenseRoutes);
+app.use('/api/expense', expenseRoutes);
 app.use('/api/locker', lockerRoutes);
 
-// Health check route
+// Health Check Endpoint
 app.get("/api/health", (req, res) => {
-  res.json({ success: true, message: "Server is running" });
+  res.json({ success: true, message: "Server is running smoothly" });
 });
 
+// Global Error Interceptor
 app.use((err, req, res, next) => {
-  console.error("Error:", err);
+  console.error("Error Fallback Logged:", err);
   res.status(500).json({
     success: false,
     message: "Internal server error",
     error: process.env.NODE_ENV === "development" ? err.message : undefined,
   });
 });
-// 404 handler must be LAST
+
+// 404 Route Interceptor (Must remain at the very bottom)
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
 
-// Start server
+// Start server helper
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
+const startServer = async () => {
+  await connectDB();
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+};
+
+startServer();

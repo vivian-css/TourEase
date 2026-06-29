@@ -1,0 +1,40 @@
+name: TourEase CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependências do Backend
+        working-directory: backend
+        run: npm install
+
+      - name: Executar testes do Backend
+        working-directory: backend
+        run: npm test
+
+      - name: Instalar dependências do Frontend
+        working-directory: frontend
+        run: npm install
+
+      - name: Executar ESLint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Build do Frontend
+        working-directory: frontend
+        run: npm run build
